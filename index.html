@@ -796,6 +796,13 @@
             const diagnosisType = getDiagnosisType(answers);
             displayResults(diagnosisType, answers);
             createRadarChart(answers);
+
+            // GTMにイベントを送信
+           window.dataLayer = window.dataLayer || [];
+           window.dataLayer.push({
+           'event': 'diagnosis_complete',
+           'diagnosisType': diagnosisType.name
+           });
         }
         
         function getDiagnosisType(scores) {
